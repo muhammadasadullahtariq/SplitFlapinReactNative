@@ -19,56 +19,18 @@ import {
   View,
   Animated,
 } from 'react-native';
+import Flip from './Component/FlipRecursive';
 
 const App = () => {
-  const [state, setstate] = useState('0deg');
-  useEffect(() => {
-    for (let i = 0; i < 180; i++) {
-      setTimeout(() => {
-        let j = i + 'deg';
-        setstate(j);
-      }, 25 * i);
-    }
-  }, []);
-
   return (
-    <View style={{alignItems: 'center', justifyContent: 'center'}}>
-      <Animated.View style={[styles.topStyle, {transform: [{rotateX: state}]}]}>
-        <Text style={{alignSelf: 'flex-end', fontSize: 20, marginTop: 12.5}}>
-          A
-        </Text>
-        <Text
-          style={{
-            alignSelf: 'flex-start',
-            fontSize: 20,
-            marginBottom: 12.5,
-            transform: [{rotateX: '180deg'}],
-          }}>
-          F
-        </Text>
-      </Animated.View>
-      <Animated.View
-        style={[styles.topStyle, , {transform: [{rotateX: state}]}]}>
-        <Text
-          style={{
-            alignSelf: 'flex-start',
-            fontSize: 20,
-            overflow: 'hidden',
-            lineHeight: 8.5,
-          }}>
-          A
-        </Text>
-        <Text
-          style={{
-            alignSelf: 'flex-end',
-            fontSize: 20,
-            overflow: 'hidden',
-            lineHeight: 8.5,
-            transform: [{rotateX: '180deg'}],
-          }}>
-          F
-        </Text>
-      </Animated.View>
+    <View
+      style={{
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+        backgroundColor: 'skyblue',
+      }}>
+      <Flip target="C" />
     </View>
   );
 };
