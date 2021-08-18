@@ -32,9 +32,12 @@ const App = () => {
         flex: 1,
       }}>
       <Flip array="BellVelocity" />
-      <Flip array="Give Order"/>
-      <Flip array="to make"/>
-      <Flip array="Split Flap"/>
+      <Flip array="Give Order" />
+      <Flip array="to make" />
+      <Flip array="Split Flap" />
+      <Flip array="And" />
+      <Flip array="Asad ullah" />
+      <Flip array="Completed it" />
     </View>
   );
 };

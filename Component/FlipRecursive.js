@@ -10,7 +10,7 @@ export default function (props) {
     if (target == obj.ch) {
       Animated.timing(spinValue, {
         toValue: 1,
-        duration: 100,
+        duration: 50,
         easing: Easing.linear,
         useNativeDriver: true,
       }).start();
@@ -18,7 +18,7 @@ export default function (props) {
       Animated.sequence([
         Animated.timing(spinValue, {
           toValue: 1,
-          duration: 100,
+          duration: 50,
           easing: Easing.linear,
           useNativeDriver: true,
         }),
