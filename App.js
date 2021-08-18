@@ -19,7 +19,7 @@ import {
   View,
   Animated,
 } from 'react-native';
-import Flip from './Component/FlipRecursive';
+import Flip from './Component/mapString';
 
 const App = () => {
   return (
@@ -27,10 +27,14 @@ const App = () => {
       style={{
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row',
-        backgroundColor: 'skyblue',
+        flexDirection: 'column',
+        backgroundColor: '#4d4d54',
+        flex: 1,
       }}>
-      <Flip target="C" />
+      <Flip array="BellVelocity" />
+      <Flip array="Give Order"/>
+      <Flip array="to make"/>
+      <Flip array="Split Flap"/>
     </View>
   );
 };
