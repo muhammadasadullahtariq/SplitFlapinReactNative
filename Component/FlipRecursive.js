@@ -66,7 +66,7 @@ export default function (props) {
 
 const styles = StyleSheet.create({
   topStyle: {
-    height: 20,
+    height: 18,
     width: 15,
     alignItems: 'center',
     alignSelf: 'center',
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 3,
   },
   downStyle: {
-    height: 20,
+    height: 18,
     width: 15,
     alignItems: 'center',
     alignSelf: 'center',
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 15,
-    marginBottom: 6,
+    marginBottom: 5,
     transform: [{rotateX: '180deg'}],
   },
   bottomUpStyle: {
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: 'white',
     overflow: 'hidden',
-    lineHeight: 6.75,
+    lineHeight: 7,
   },
   bottomDownStyle: {
     alignSelf: 'flex-end',
