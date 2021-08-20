@@ -32,11 +32,11 @@ const App = () => {
   const [arrayjson, setArray] = useState({
     arr: [
       {id: 'm1', item: 'AA 682 CHICAGO 830'},
-      // {id: 'm2', item: 'AA 21 PORTLAND 845'},
-      // {id: 'm3', item: 'OC 851 LOS ANGELES 915'},
-      // {id: 'm4', item: 'HP 1588 DETROIT 930'},
-      // {id: 'm5', item: 'OS 77 WICHITA 1030'},
-      // {id: 'm6', item: 'DL 142 AUSTIN 1105'},
+      {id: 'm2', item: 'AA 21 PORTLAND 845'},
+      {id: 'm3', item: 'OC 851 LOS ANGELES 915'},
+      {id: 'm4', item: 'HP 1588 DETROIT 930'},
+      {id: 'm5', item: 'OS 77 WICHITA 1030'},
+      {id: 'm6', item: 'DL 142 AUSTIN 1105'},
     ],
   });
   const [flagToChange, setFlag] = useState({flag: true});
