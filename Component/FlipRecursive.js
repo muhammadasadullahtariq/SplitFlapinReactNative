@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Animated, Text, Easing} from 'react-native';
+import {StyleSheet, View, Animated, Text, Easing, Platform} from 'react-native';
 import array from './array';
 let ind = 6;
 export default function (props) {
@@ -96,7 +96,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 15,
-    marginBottom: 5,
+    ...Platform.select({
+      ios: {
+        marginBottom: 5,
+      },
+      android: {
+        marginBottom: 4,
+      },
+    }),
     transform: [{rotateX: '180deg'}],
   },
   bottomUpStyle: {
@@ -105,7 +112,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: 'white',
     overflow: 'hidden',
-    lineHeight: 7,
+    ...Platform.select({
+      ios: {lineHeight: 6},
+      android: {
+        lineHeight: 6,
+      },
+    }),
   },
   bottomDownStyle: {
     alignSelf: 'flex-end',
