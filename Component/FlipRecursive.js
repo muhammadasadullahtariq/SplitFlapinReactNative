@@ -5,12 +5,13 @@ let ind = 6;
 export default function (props) {
   let spinValue = new Animated.Value(0);
   const [target, setTarget] = useState(props.target);
+  const [flagState, setStateFlag] = useState({flag: true});
   const [obj, setObj] = useState({index: 1, ch: array[0]});
   function createAnim() {
     if (target == obj.ch) {
       Animated.timing(spinValue, {
         toValue: 1,
-        duration: 50,
+        duration: 10,
         easing: Easing.linear,
         useNativeDriver: true,
       }).start();
@@ -18,7 +19,7 @@ export default function (props) {
       Animated.sequence([
         Animated.timing(spinValue, {
           toValue: 1,
-          duration: 50,
+          duration: 10,
           easing: Easing.linear,
           useNativeDriver: true,
         }),
@@ -29,7 +30,6 @@ export default function (props) {
           useNativeDriver: true,
         }),
       ]).start(() => {
-        console.log(obj);
         if (target != obj.ch)
           setObj(pre => {
             return {index: pre.index + 1, ch: array[pre.index]};
@@ -38,9 +38,16 @@ export default function (props) {
     }
   }
   useEffect(() => {
-    console.log('hey');
+    if (props.test != flagState.flag) {
+      setStateFlag(() => {
+        return {flag: props.test};
+      });
+      setObj(() => {
+        return {index: 1, ch: array[0]};
+      });
+    }
     createAnim();
-  }, [obj]);
+  }, [obj, props.test]);
   const spin2 = spinValue.interpolate({
     inputRange: [0, 1],
     outputRange: ['0deg', '180deg'],
@@ -60,7 +67,7 @@ export default function (props) {
 const styles = StyleSheet.create({
   topStyle: {
     height: 20,
-    width: 20,
+    width: 15,
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
@@ -73,7 +80,7 @@ const styles = StyleSheet.create({
   },
   downStyle: {
     height: 20,
-    width: 20,
+    width: 15,
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
@@ -88,24 +95,24 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     textAlign: 'center',
     color: 'white',
-    fontSize: 20,
-    marginBottom: 3.5,
+    fontSize: 15,
+    marginBottom: 6,
     transform: [{rotateX: '180deg'}],
   },
   bottomUpStyle: {
     alignSelf: 'flex-start',
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 15,
     color: 'white',
     overflow: 'hidden',
-    lineHeight: 10,
+    lineHeight: 6.75,
   },
   bottomDownStyle: {
     alignSelf: 'flex-end',
-    fontSize: 20,
+    fontSize: 15,
     overflow: 'hidden',
     textAlign: 'center',
-    lineHeight: 8.5,
+    lineHeight: 3.5,
     transform: [{rotateX: '180deg'}],
   },
 });

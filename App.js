@@ -7,7 +7,7 @@
  */
 
 import {transform} from '@babel/core';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, forceUpdate} from 'react';
 
 import {
   SafeAreaView,
@@ -18,10 +18,32 @@ import {
   useColorScheme,
   View,
   Animated,
+  Button,
+  TouchableOpacity,
 } from 'react-native';
 import Flip from './Component/mapString';
 
 const App = () => {
+  const fun = () => {
+    console.log('Asad');
+    return null;
+  };
+  const [item, setItem] = useState({it: 'AA 682 CHICAGO 830'});
+  const [arrayjson, setArray] = useState({
+    arr: [
+      {id: 'm1', item: 'AA 682 CHICAGO 830'},
+      {id: 'm2', item: 'AA 21 PORTLAND 845'},
+      {id: 'm3', item: 'OC 851 LOS ANGELES 915'},
+      {id: 'm4', item: 'HP 1588 DETROIT 930'},
+      {id: 'm5', item: 'OS 77 WICHITA 1030'},
+      {id: 'm6', item: 'DL 142 AUSTIN 1105'},
+    ],
+  });
+  const [flagToChange, setFlag] = useState({flag: true});
+  useEffect(() => {
+    console.log(item);
+    fun();
+  }, [item]);
   return (
     <View
       style={{
@@ -31,13 +53,19 @@ const App = () => {
         backgroundColor: '#4d4d54',
         flex: 1,
       }}>
-      <Flip array="BellVelocity" />
-      <Flip array="Give Order" />
-      <Flip array="to make" />
-      <Flip array="Split Flap" />
-      <Flip array="And" />
-      <Flip array="Asad ullah" />
-      <Flip array="Completed it" />
+      {arrayjson.arr.map(item => {
+        return <Flip array={item.item} test={flagToChange.flag} />;
+      })}
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => {
+          setFlag(f => {
+            console.log(flagToChange);
+            return {flag: !f.flag};
+          });
+        }}>
+        <Text style={[styles.textContainer]}>Refresh</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -49,6 +77,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'skyblue',
     flexDirection: 'row',
+  },
+  textContainer: {
+    padding: 10,
+    backgroundColor: '#2097f5',
+    borderRadius: 2,
+    color: 'white',marginTop:20
   },
 });
 
